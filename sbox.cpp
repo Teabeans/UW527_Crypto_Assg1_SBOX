@@ -11,8 +11,11 @@
 //
 // Tim Lum
 // twhlum@gmail.com
+//
+// Matt Sell
+//
 // Created:  2020.01.15
-// Modified: 2020.--.-- (TODO)
+// Modified: 2020.01.23 (TODO)
 // For the University of Washington Bothell, CSS 527
 // Winter 2020, Masters in Cybersecurity Engineering (MCSE)
 //
@@ -21,13 +24,13 @@
 // File Description
 //-----------------------------------------------------------------------------|
 //
-// TODO
+// Implementation file for the sbox class
 
 //-----------------------------------------------------------------------------|
 // Package Files
 //-----------------------------------------------------------------------------|
 //
-// TODO
+// See README.md
 
 //-----------------------------------------------------------------------------|
 // Useage
