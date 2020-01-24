@@ -496,13 +496,13 @@ void sbox::renderBinaryString( std::string bitSequence ) {
 }
 
 // (+) --------------------------------|
-// #TODO( )
+// #renderPlaintext( )
 // ------------------------------------|
 // Desc:    Renders the Sbox's plaintext buffer
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Params:  int arg1 - The number of characters of the plaintext to render
+// PreCons: None
+// PosCons: None
+// RetVal:  None
 void sbox::renderPlaintext( int length) {
   if( DEBUG ) {
     std::cerr << "Rendering plaintext..." << std::endl;
@@ -518,7 +518,7 @@ void sbox::renderPlaintext( int length) {
     std::cerr << "--------|--------|-------- PLAINTEXT --------|--------|--------" << std::endl;
   }
   std::cerr << std::endl;
-}
+} // Closing renderPlaintext()
 
 // (+) --------------------------------|
 // #TODO( )
