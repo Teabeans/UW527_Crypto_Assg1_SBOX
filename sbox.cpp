@@ -464,14 +464,14 @@ char sbox::convertIntToChar( int input ) {
 //-------|---------|---------|---------|---------|---------|
 
 // (+) --------------------------------|
-// #toString( int, int )
+// #cipherToString( int, int )
 // ------------------------------------|
-// Desc:    Convert a selection of rows to their binary representations
+// Desc:    Convert a selection of rows to their binary string equivalent
 // Params:  int arg1 - The first row to convert (inclusive)
 //          int arg2 - The final row to convert (inclusive)
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// PreCons: None
+// PosCons: No whitespaces are included; each char is 4 bits
+// RetVal:  std::string - The binary string representation of the ciphertext
 std::string sbox::cipherToString( int minRow, int maxRow ) {
   std::stringstream ss;
   for( int currRow = minRow ; currRow <= maxRow ; currRow++ ) {
@@ -481,7 +481,7 @@ std::string sbox::cipherToString( int minRow, int maxRow ) {
     }
   }
   return ss.str();
-} // closing toString()
+} // closing cipherToString()
 
 void sbox::renderBinaryString( std::string bitSequence ) {
   for( int i = 0 ; i < bitSequence.length() ; i++ ) {
@@ -493,7 +493,7 @@ void sbox::renderBinaryString( std::string bitSequence ) {
       std::cerr << std::endl;
     }
   }
-}
+} // Closing cipherToString()
 
 // (+) --------------------------------|
 // #renderPlaintext( )
