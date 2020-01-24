@@ -521,13 +521,13 @@ void sbox::renderPlaintext( int length) {
 } // Closing renderPlaintext()
 
 // (+) --------------------------------|
-// #TODO( )
+// #renderCiphertext( )
 // ------------------------------------|
 // Desc:    Renders the Sbox's ciphertext buffer
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Params:  int arg1 - The number of characters of the ciphertext to render
+// PreCons: None
+// PosCons: None
+// RetVal:  None
 void sbox::renderCiphertext( int length ) {
   if( DEBUG ) {
     std::cerr << "Rendering ciphertext..." << std::endl;
@@ -542,7 +542,7 @@ void sbox::renderCiphertext( int length ) {
   if( DEBUG ) {
     std::cerr << "--------|--------|-------- CIPHERTEXT --------|--------|--------" << std::endl;
   }
-}
+} // Closing renderCiphertext()
 
 //-------|---------|---------|---------|---------|---------|
 //       GETTERS / SETTERS
