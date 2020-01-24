@@ -100,13 +100,13 @@ sbox::~sbox( ) {
 }
 
 // (+) --------------------------------|
-// #TODO( )
+// #tareFields( )
 // ------------------------------------|
-// Desc:    TODO
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Desc:    Zeroes all internal fields of the sbox object
+// Params:  None
+// PreCons: None
+// PosCons: All internal fields of the sbox object have been zeroed
+// RetVal:  None
 void sbox::tareFields( ) {
   for( int row = 0 ; row < 4 ; row++ ) {
     this->K1[row] = (unsigned char)0;
@@ -124,7 +124,7 @@ void sbox::tareFields( ) {
     this->plaintext[ i ]  = '\0';
     this->ciphertext[ i ] = '\0';
   }
-}
+} // Closing tareFields()
 
 //-------|---------|---------|---------|---------|---------|---------|---------|
 //
