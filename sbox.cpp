@@ -76,28 +76,28 @@
 //-------|---------|---------|---------|---------|---------|---------|---------|
 
 // (+) --------------------------------|
-// #TODO( )
+// #sbox( )
 // ------------------------------------|
-// Desc:    TODO
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Desc:    Default constructor for an sbox object
+// Params:  None
+// PreCons: None
+// PosCons: An sbox object has been constructed and zeroed
+// RetVal:  None
 sbox::sbox( ) {
   this->tareFields();
-}
+} // Closing sbox()
 
 // (+) --------------------------------|
-// #TODO( )
+// #~sbox( )
 // ------------------------------------|
-// Desc:    TODO
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Desc:    Destructor for an sbox object
+// Params:  None
+// PreCons: None
+// PosCons: None
+// RetVal:  None
 sbox::~sbox( ) {
   this->tareFields();
-}
+} // Closing ~sbox()
 
 // (+) --------------------------------|
 // #tareFields( )
