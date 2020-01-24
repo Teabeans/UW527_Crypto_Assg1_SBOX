@@ -282,11 +282,11 @@ bool sbox::loadSbox( std::string filenameS1, std::string filenameS2 ) {
 // (+) --------------------------------|
 // #loadKeys( )
 // ------------------------------------|
-// Desc:    TODO
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Desc:    Load the keys from file into the sbox object
+// Params:  std::string arg1 - The filename to read the keys from
+// PreCons: The key file must be configured properly
+// PosCons: The keys have been loaded
+// RetVal:  bool - Whether the load was successful or not
 bool sbox::loadKeys( std::string filename ) {
   if( DEBUG ) {
     std::cerr << "Loading keys K1, K2 from '" << filename << "'..." << std::endl;
@@ -327,7 +327,7 @@ bool sbox::loadKeys( std::string filename ) {
 
   }
   return true;
-}
+} // Closing loadKeys()
 
 //-------|---------|---------|---------|---------|---------|
 //       WORKERS
