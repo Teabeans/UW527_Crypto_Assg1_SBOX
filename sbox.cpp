@@ -140,10 +140,10 @@ void sbox::tareFields( ) {
 // #loadPlaintext( )
 // ------------------------------------|
 // Desc:    Reads a file of bits into the plaintext buffer
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Params:  std::string arg1 - The filename to read the plaintext from
+// PreCons: The plaintext must be configured properly
+// PosCons: The plaintext has been loaded in
+// RetVal:  bool - Whether the load was successful or not
 bool sbox::loadPlaintext( std::string filename ) {
   if( DEBUG ) {
     std::cerr << "Loading plaintext from '" << filename << "'... ";
