@@ -3,7 +3,7 @@
 //-------|---------|---------|---------|---------|---------|---------|---------|
 //
 // UW CSS 527 - Assg1 - Substitution Boxes
-// sbox.cpp
+// sbox.h
 //
 //-------|---------|---------|---------|---------|---------|---------|---------|
 
@@ -26,7 +26,7 @@
 // File Description
 //-----------------------------------------------------------------------------|
 //
-// Implementation file for the sbox class
+// Declaration file for the sbox class
 
 //-----------------------------------------------------------------------------|
 // Package Files
@@ -51,12 +51,25 @@
 
 #define MAX_MSG_LENGTH 1024
 
+//-------|---------|---------|---------|---------|---------|---------|---------|
+//
+//       INCLUDES
+//
+//-------|---------|---------|---------|---------|---------|---------|---------|
+
 #include <iostream>
 #include <string>
 #include <fstream>
 
 class sbox {
   public:
+
+//-------|---------|---------|---------|---------|---------|---------|---------|
+//
+//       PUBLIC FIELDS
+//
+//-------|---------|---------|---------|---------|---------|---------|---------|
+
   // Substitution boxes (as grid)
   unsigned char S1[4][4]; // [row][col]
   unsigned char S2[4][4]; // [row][col]
@@ -71,6 +84,12 @@ class sbox {
   // Plaintext and ciphertext buffers
   unsigned char plaintext[  MAX_MSG_LENGTH ];
   unsigned char ciphertext[ MAX_MSG_LENGTH ];
+
+//-------|---------|---------|---------|---------|---------|---------|---------|
+//
+//       PUBLIC METHODS
+//
+//-------|---------|---------|---------|---------|---------|---------|---------|
 
   // Constructor/Destructors
   sbox();
@@ -88,20 +107,20 @@ class sbox {
   void encrypt( std::string keyDesignate, int row );
   double avalancheCompare( std::string seq1, std::string seq2 );
 
-  // Convert data from one to another
+  // Converters
   int convertBinaryToInt( std::string binaryString );
   char convertIntToChar( int input );
 
-  // Convert a row selection to string
+  // toStrings
   std::string cipherToString( int min, int max );
 
-  // Render texts
+  // Renderers
   void renderBinaryString( std::string bitSequence );
   void renderPlaintext( int length );
   void renderCiphertext( int length );
 
   // Getters/Setters
   unsigned char getBoxValue( int boxNumber, int position );
-};
+}; // Closing class sbox
 
 // End of file sbox.h
