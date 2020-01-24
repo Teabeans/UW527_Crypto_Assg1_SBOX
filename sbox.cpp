@@ -447,17 +447,17 @@ int sbox::convertBinaryToInt( std::string binaryString ) {
 } // Closing convertBinaryToInt()
 
 // (+) --------------------------------|
-// #TODO( )
+// #convertIntToChar( )
 // ------------------------------------|
-// Desc:    TODO
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Desc:    Convert an integer to its char equivalent
+// Params:  int arg1 - The integer to convert to ASCII char
+// PreCons: Arg1 must be within range 0 to 255 (inclusive)
+// PosCons: None
+// RetVal:  char - The ASCII char equivalent
 char sbox::convertIntToChar( int input ) {
   char retchar = (char)input;
   return retchar;
-}
+} // Closing convertIntToChar()
 
 //-------|---------|---------|---------|---------|---------|
 //       RENDERERS
