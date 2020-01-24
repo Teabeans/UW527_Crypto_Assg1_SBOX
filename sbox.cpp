@@ -192,10 +192,11 @@ bool sbox::loadPlaintext( std::string filename ) {
 // #loadSbox( )
 // ------------------------------------|
 // Desc:    Load substitution boxes S1 and S2 from file
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Params:  std::string arg1 - The first substitution box as .txt
+//          std::string arg2 - The seconds substitution box as .txt
+// PreCons: Arg1 and Arg2 must be configured properly
+// PosCons: The substitution boxes have been loaded
+// RetVal:  bool - Whether the load was successful or not
 bool sbox::loadSbox( std::string filenameS1, std::string filenameS2 ) {
   if( DEBUG ) {
     std::cerr << "Loading substitution boxes from '" << filenameS1 << "', '" << filenameS2 << "'... ";
