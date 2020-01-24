@@ -1,17 +1,67 @@
 #pragma once
 
+//-------|---------|---------|---------|---------|---------|---------|---------|
+//
+// UW CSS 527 - Assg1 - Substitution Boxes
+// sbox.cpp
+//
+//-------|---------|---------|---------|---------|---------|---------|---------|
+
+//-----------------------------------------------------------------------------|
+// Authorship
+//-----------------------------------------------------------------------------|
+//
+// Tim Lum
+// twhlum@gmail.com
+//
+// Matt Sell
+//
+// Created:  2020.01.15
+// Modified: 2020.01.23 (TODO)
+// For the University of Washington Bothell, CSS 527
+// Winter 2020, Masters in Cybersecurity Engineering (MCSE)
+//
+
+//-----------------------------------------------------------------------------|
+// File Description
+//-----------------------------------------------------------------------------|
+//
+// Implementation file for the sbox class
+
+//-----------------------------------------------------------------------------|
+// Package Files
+//-----------------------------------------------------------------------------|
+//
+// See README.md
+
+//-----------------------------------------------------------------------------|
+// Useage
+//-----------------------------------------------------------------------------|
+//
+// Compile with:
+// $ ./compile.sh
+//
+
+
+//-------|---------|---------|---------|---------|---------|---------|---------|
+//
+//       DEFINES
+//
+//-------|---------|---------|---------|---------|---------|---------|---------|
+
+#define MAX_MSG_LENGTH 1024
+
 #include <iostream>
 #include <string>
 #include <fstream>
 
-#define MAX_MSG_LENGTH 1024
-
 class sbox {
   public:
-  // Substitution boxes
+  // Substitution boxes (as grid)
   unsigned char S1[4][4]; // [row][col]
-  unsigned char S1Linear[16];
   unsigned char S2[4][4]; // [row][col]
+  // Substitution boxes (linear)
+  unsigned char S1Linear[16];
   unsigned char S2Linear[16];
 
   // Keys
@@ -19,9 +69,10 @@ class sbox {
   unsigned char K2[4];
 
   // Plaintext and ciphertext buffers
-  unsigned char plaintext[ MAX_MSG_LENGTH ];
+  unsigned char plaintext[  MAX_MSG_LENGTH ];
   unsigned char ciphertext[ MAX_MSG_LENGTH ];
 
+  // Constructor/Destructors
   sbox();
   ~sbox();
 
@@ -49,8 +100,8 @@ class sbox {
   void renderPlaintext( int length );
   void renderCiphertext( int length );
 
-
   // Getters/Setters
   unsigned char getBoxValue( int boxNumber, int position );
 };
 
+// End of file sbox.h
