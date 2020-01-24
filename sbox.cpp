@@ -413,7 +413,7 @@ double sbox::avalancheCompare( std::string seq1, std::string seq2 ) {
 
   }
   if( seq1.length() != seq2.length() ) {
-  	std::cerr << "Invalid comparison. Sequences are of differing length." << std::endl;
+    std::cerr << "Invalid comparison. Sequences are of differing length." << std::endl;
     return 9999.99;
   }
 
@@ -434,17 +434,17 @@ double sbox::avalancheCompare( std::string seq1, std::string seq2 ) {
 //-------|---------|---------|---------|---------|---------|
 
 // (+) --------------------------------|
-// #TODO( )
+// #convertBinaryToInt( )
 // ------------------------------------|
-// Desc:    TODO
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Desc:    Converts a binary string to its integer equivalent
+// Params:  std::string arg1 - The binary string to convert
+// PreCons: Arg1 must be a valid binary string
+// PosCons: None
+// RetVal:  int - The integer equivalent of arg1
 int sbox::convertBinaryToInt( std::string binaryString ) {
   unsigned int retval = std::stoi( binaryString, nullptr, 2);
   return retval;
-}
+} // Closing convertBinaryToInt()
 
 // (+) --------------------------------|
 // #TODO( )
