@@ -336,11 +336,12 @@ bool sbox::loadKeys( std::string filename ) {
 // (+) --------------------------------|
 // #encrypt( )
 // ------------------------------------|
-// Desc:    TODO
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// Desc:    Encrypts the plaintext buffer into the ciphertext buffer
+// Params:  std::string arg1 - The key to use (K1 or K2)
+//          int arg2         - The plaintext row to encrypt
+// PreCons: None
+// PosCons: To perform correctly, the sbox object should be initialized properly
+// RetVal:  None
 void sbox::encrypt( std::string keyDesignate, int row ) {
   if( DEBUG ) {
     std::cerr << "Encrypting MSG (" << row << ") using '" << keyDesignate << "'..." << std::endl;
@@ -403,9 +404,10 @@ void sbox::encrypt( std::string keyDesignate, int row ) {
 // #avalancheCompare( string, string )
 // ------------------------------------|
 // Desc:    Analyze the avalanche effect
-// Params:  TODO
-// PreCons: TODO
-// PosCons: TODO
+// Params:  std::string arg1 - The first binary string to compare
+//          std::string arg2 - The second binary string to compare
+// PreCons: Arg1 and arg2 must be equal length
+// PosCons: None
 // RetVal:  double - The percent from 0.0 to 100.0 from which the strings differs from another sbox
 double sbox::avalancheCompare( std::string seq1, std::string seq2 ) {
   if( DEBUG ) {
@@ -426,7 +428,7 @@ double sbox::avalancheCompare( std::string seq1, std::string seq2 ) {
 
   double retDouble = 100.0 * ((double)diffs / (double)seq1.length());
 
-  return retDouble;  
+  return retDouble;
 } // Closing avalancheCompare()
 
 //-------|---------|---------|---------|---------|---------|
