@@ -549,13 +549,14 @@ void sbox::renderCiphertext( int length ) {
 //-------|---------|---------|---------|---------|---------|
 
 // (+) --------------------------------|
-// #TODO( )
+// #getBoxValue( )
 // ------------------------------------|
 // Desc:    Get the value at the supplied linear position within the specified S-Box
-// Params:  TODO
+// Params:  int arg1 - 
+//          int arg2 - 
 // PreCons: TODO
-// PosCons: TODO
-// RetVal:  TODO
+// PosCons: None
+// RetVal:  unsigned char - TODO
 unsigned char sbox::getBoxValue( int boxNumber, int position ) {
 /*
   int row = position % MAX_ROWS_COLUMNS;
@@ -565,6 +566,6 @@ unsigned char sbox::getBoxValue( int boxNumber, int position ) {
 
   return S2[ row ][ column ];
 */
-}
+} // Closing getBoxValue()
 
 // End of file sbox.cpp
