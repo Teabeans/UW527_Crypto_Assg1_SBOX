@@ -63,6 +63,7 @@
 #include <stdio.h>
 #include <iomanip>
 #include <bitset>
+#include <ctime>
 
 // initial S-Box values
 unsigned char s1[ 16 ] = { 15, 8, 1, 9, 10, 4, 0, 3, 2, 11, 14, 12, 5, 6, 7, 13 };
@@ -108,10 +109,46 @@ unsigned char twiddleBit( unsigned char a, int n ) {
 
 	// inspired by: https://stackoverflow.com/questions/47981/how-do-you-set-clear-and-toggle-a-single-bit
 
-	unsigned char val = a;
-	val ^= 1UL << n;
+	a ^= 1UL << n;
 
-	return val;
+	return a;
+
+}
+
+void generateRandomArray( unsigned char array[ 16 ] ) {
+
+	// inspired by: http://www.cplusplus.com/forum/beginner/95663/
+
+	unsigned char newItem;
+
+	// reset array values to something that will not be obtained
+	for ( int i = 0; i < 16; i ++ ) {
+		array[ i ] = 16;
+	}
+
+	for ( int i = 0; i < 16; i ++ ) {
+
+		bool unique;
+
+		do {
+
+	    	unique = true;
+	    	newItem = rand() % 16;
+
+	    	for ( int j = 0;j < 16; j ++ ) {
+
+	    		if( array[ j ] == newItem ) {
+	    			unique = false;
+	    			break;
+	    		}
+
+	    	}
+
+	    } while ( unique == false );
+
+	    array[ i ] = newItem;
+
+	}
 
 }
 
@@ -223,64 +260,70 @@ void loadPlaintext( std::string filename ) {
 
 int main() {
 
+	srand( time ( NULL ) );
+
 	// cipher
 	sbox2 theBox;
 
 	// load source into plaintext array
 	loadPlaintext( "plaintext.txt" );
 
-	// test Sbox load
+	// test Sbox initial values load
 	theBox.setSBox1( s1 );
 	theBox.setSBox2( s2 );
 
-	//std::cerr << "Twiddled: " << (unsigned int)twiddleBit( 0, 2 ) << std::endl;
+	// get initial avalanche from provided S-Box initial values
+	double maxAvalanche = 0.0;
+	maxAvalanche = calculateAvalanche( &theBox );
+	std::cerr << "Initial: " << maxAvalanche << std::endl;
 
+	// repeat avalanche calculations looking for better S-Box values
+	unsigned char newSBox1[ 16 ];
+	unsigned char newSBox2[ 16 ];
+	while ( true ) {
 
+		// generate random S-Box values
+		generateRandomArray( newSBox1 );
+		generateRandomArray( newSBox2 );
 
+		// set cipher to use the random boxes
+		theBox.setSBox1( newSBox1 );
+		theBox.setSBox2( newSBox2 );
 
-	std::cerr << "Avalanche: " << calculateAvalanche( &theBox ) << std::endl;
+		// calculate avalanche
+		double avalanche = calculateAvalanche( &theBox );
 
+		// better?
+		if ( avalanche >  maxAvalanche ) {
 
+			std::cerr << "Better: " << avalanche << std::endl;
+			maxAvalanche = avalanche;
 
+			// display better S-Box values
+			std::cerr << "Better S1: ";
+			for( int i = 0 ; i < 16 ; i++ ) {
+				std::cerr << std::setw(3) << (unsigned int)newSBox1[i] << " ";
+				if( i == 15 ) {
+					std::cerr << std::endl;
+				}
+			}
 
+			std::cerr << "Better S2: ";
+			for( int i = 0 ; i < 16 ; i++ ) {
+				std::cerr << std::setw(3) << (unsigned int)newSBox2[i] << " ";
+				if( i == 15 ) {
+					std::cerr << std::endl;
+				}
+			}
 
+			std::cerr << std::endl << std::endl;
 
-//  theBox.renderPlaintext( 44 );
-
-  // Test S-box encryption using K1 (rather than K2)
-  // Key 1, Row 0
-	unsigned char plaintext[ 4 ] = { 9, 4, 6, 6 };
-    unsigned char ciphertext[ 4 ];
-    theBox.encrypt( keys[ 0 ], plaintext, ciphertext );
-
-	std::cerr << "Cipher text:" << std::endl;
-	for( int i = 0 ; i < 4 ; i++ ) {
-		std::cerr << std::setw(3) << (unsigned int)ciphertext[i] << " ";
-		if( i == 3 ) {
-			std::cerr << std::endl;
 		}
+
 	}
 
-
-//  theBox.renderCiphertext( 44 );
-
-//  sbox2 compareBox;
-//  compareBox.loadSbox( "S1.txt", "S2.txt" );
-//  compareBox.loadKeys( "keys.txt" );
-//  compareBox.loadPlaintext( "plaintext_1bit.txt" );
-//  for( int i = 0 ; i < 11 ; i++ ) {
-//    compareBox.encrypt( "K1", i );
-//  }
-//  compareBox.renderCiphertext( 44 );
-//
-//  std::cerr << compareBox.cipherToString( 1, 10) << std::endl;
-//  compareBox.renderBinaryString( compareBox.cipherToString(1, 10) );
-//
-//  std::cerr << theBox.avalancheCompare( "abcdeg", "abceeg" ) << std::endl << std::endl;
-//
-//  std::cerr << theBox.avalancheCompare( theBox.cipherToString( 1, 10), compareBox.cipherToString( 1, 10) ) << std::endl;
-
   return 1;
+
 } // Closing main()
 
 
