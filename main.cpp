@@ -66,8 +66,8 @@
 #include <ctime>
 
 // initial S-Box values
-unsigned char s1[ 16 ] = { 15, 8, 1, 9, 10, 4, 0, 3, 2, 11, 14, 12, 5, 6, 7, 13 };
-unsigned char s2[ 16 ] = { 4, 8, 5, 2, 0, 9, 1, 3, 15, 7, 6, 14, 10, 13, 11, 12 };
+unsigned char s1[ 16 ] = { 15, 6, 14, 9, 1, 12, 0, 7, 5, 11, 3, 13, 2, 8, 4, 10 };
+unsigned char s2[ 16 ] = { 10, 5, 15, 12, 13, 2, 8, 7, 1, 6, 4, 3, 14, 9, 11, 0 };
 
 // keys
 unsigned char keys[ 2 ][ 4 ] = {
